@@ -19,10 +19,16 @@
 #define SET_GREEN_OFF 0x4000000;
 #define SET_BLUE_OFF 0x00200000;
 
+
+
 typedef enum{RED_ON, /*!< Definition to select GPIO A */
 			 GREEN_ON, /*!< Definition to select GPIO B */
 			 BLUE_ON, /*!< Definition to select GPIO C */
 			} color_ON;
+typedef enum{RED_OFF, /*!< Definition to select GPIO A */
+			 GREEN_OFF, /*!< Definition to select GPIO B */
+			 BLUE_OFF, /*!< Definition to select GPIO C */
+			} color_OFF;
 
 
 
