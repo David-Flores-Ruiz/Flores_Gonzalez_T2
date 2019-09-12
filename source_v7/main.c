@@ -45,6 +45,7 @@ int main(void) {
 		abajo_sw3  = GPIO_read_pin( GPIO_A, bit_4);	// lee el sw3
 
 		if ( (contador == 0) && (contador_2 == 0) ){	  // Estado inicial y cada vez que salga de una secuencia.
+<<<<<<< HEAD
 					apagar_LED(RED_OFF);
 					apagar_LED(BLUE_OFF);
 					encender_LED(GREEN_ON);
@@ -148,3 +149,102 @@ int main(void) {
 
 
  // end main
+=======
+			apagar_LED(RED_OFF);
+			apagar_LED(BLUE_OFF);
+			encender_LED(GREEN_ON);
+		}
+
+		while ( (arriba_sw2 == 0) && (abajo_sw3 != 0) ) { // Si solo está presionado el sw2...
+			arriba_sw2 = GPIO_read_pin(GPIO_C, bit_6);	  // lee el sw2
+			if (arriba_sw2 != 0) {
+				contador++;
+			}
+			switch ( contador ) {		// Obtengo valores del 1 - 5 (el 5to reinicia la secuencia)
+
+			case 1:
+				apagar_LED(GREEN_OFF);
+				encender_LED(RED_ON);		// Rojo + Verde
+				encender_LED(GREEN_ON);		// = Amarillo	- on
+				break;
+
+			case 2:
+				apagar_LED(RED_OFF);
+				apagar_LED(GREEN_OFF);
+				encender_LED(RED_ON);		// Rojo   		- on
+				break;
+
+			case 3:
+				apagar_LED(RED_OFF);
+				encender_LED(BLUE_ON);		// Azul + Rojo
+				encender_LED(RED_ON);		// = Morado  	- on
+				break;
+
+			case 4:
+				apagar_LED(BLUE_OFF);
+				apagar_LED(RED_OFF);
+				encender_LED(BLUE_ON);		// Azul	  		- on
+				break;
+
+			default:/**If doesn't exist the option*/
+				apagar_LED(BLUE_OFF);
+				contador   = 0;				// */*/ Reinicio de secuencia ASCENDENTE */*/ //
+				contador_2 = 0;
+				break;
+			} // end switch
+		} // end while (sw2)
+
+		while ( (arriba_sw2 != 0) && (abajo_sw3 == 0) ) { // Si solo está presionado el sw3...
+			abajo_sw3 = GPIO_read_pin(GPIO_A, bit_4);	  // lee el sw3
+			if (abajo_sw3 != 0) {
+				contador_2++;
+			}
+			switch ( contador_2 ) {// Obtengo valores del 1 - 5 (el 5to reinicia la secuencia)
+
+			case 1:
+				apagar_LED(GREEN_OFF);
+				encender_LED(BLUE_ON);		// Azul   	    - on
+				break;
+
+			case 2:
+				apagar_LED(BLUE_OFF);
+				encender_LED(BLUE_ON);		// Azul + Rojo
+				encender_LED(RED_ON);		// = Morado     - on
+				break;
+
+			case 3:
+				apagar_LED(BLUE_OFF);
+				apagar_LED(RED_OFF);
+				encender_LED(RED_ON);		// Rojo		    - on
+				break;
+
+			case 4:
+				apagar_LED(RED_OFF);
+				encender_LED(RED_ON);		// Rojo + Verde
+				encender_LED(GREEN_ON);		// = Amarillo	- on
+				break;
+
+			default:
+				apagar_LED(RED_OFF);
+				apagar_LED(GREEN_OFF);
+				contador_2 = 0;	// */*/ Reinicio de secuencia DESCENDENTE */*/ //
+				contador = 0;
+				break;
+			} // end switch
+		} // end while (sw3)
+
+		while ( (arriba_sw2 == 0) && (abajo_sw3 == 0) ) { // Si se presionan el sw2 + el sw3...
+			arriba_sw2 = GPIO_read_pin(GPIO_C, bit_6);	  // lee el sw2
+			abajo_sw3  = GPIO_read_pin(GPIO_A, bit_4);	  // lee el sw3
+			encender_LED(RED_ON);		// Rojo   		- on	|
+			encender_LED(GREEN_ON);		// Green   		- on	 > = WHITE
+			encender_LED(BLUE_ON);		// Blue   		- on	|
+			delay(3000);
+			contador   = 0;
+			contador_2 = 0;
+		} // end while (sw2 + sw3)
+
+	} // end while (1)
+    return 0 ;
+} // end main
+>>>>>>> fc8981d13db48f41244c9ad0fe35012ecc960fff
