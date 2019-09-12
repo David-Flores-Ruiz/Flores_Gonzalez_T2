@@ -147,21 +147,21 @@ void GPIO_set_pin(gpio_port_name_t port_name, uint8_t pin)	   // f(x) #8	done! +
 {
 	switch (port_name) {
 	case GPIO_A:
-		GPIOA->PSOR = (GPIOB->PSOR) | (1<<pin);
+		GPIOA->PSOR = (1<<pin);
 		break;
 	case GPIO_B:/** GPIO B is selected*/
-		GPIOB->PSOR = (GPIOB->PSOR) | (1<<pin);		// test Debbug
+		GPIOB->PSOR = (1<<pin);		// test Debbug
 		//int a = GPIOB->PSOR;	// test Debbug 		// no se puede hacer a = 0000hex
 
 		break;
 	case GPIO_C:/** GPIO C is selected*/
-		GPIOC->PSOR = (GPIOB->PSOR) | (1<<pin);
+		GPIOC->PSOR = (1<<pin);
 		break;
 	case GPIO_D:/** GPIO D is selected*/
-		GPIOD->PSOR = (GPIOB->PSOR) | (1<<pin);
+		GPIOD->PSOR = (1<<pin);
 		break;
 	case GPIO_E:/** GPIO E is selected*/
-		GPIOE->PSOR = (GPIOB->PSOR) | (1<<pin);
+		GPIOE->PSOR = (1<<pin);
 	default:/**If doesn't exist the option*/
 
 		break;
@@ -196,19 +196,19 @@ void GPIO_clear_pin(gpio_port_name_t port_name, uint8_t pin)   // f(x) #10	done!
 {
 	switch (port_name) {
 	case GPIO_A:
-		GPIOA->PCOR = (GPIOA->PSOR) | (1<<pin);
+		GPIOA->PCOR =  (1<<pin);
 		break;
 	case GPIO_B:/* GPIO B is selected*/
-		GPIOB->PCOR = (GPIOB->PSOR) | (1<<pin);
+		GPIOB->PCOR =  (1<<pin);
 		break;
 	case GPIO_C:/* GPIO C is selected*/
-		GPIOC->PCOR = (GPIOC->PSOR) | (1<<pin);
+		GPIOC->PCOR =  (1<<pin);
 		break;
 	case GPIO_D:/* GPIO D is selected*/
-		GPIOD->PCOR = (GPIOD->PSOR) | (1<<pin);
+		GPIOD->PCOR = (1<<pin);
 		break;
 	case GPIO_E: /* GPIO E is selected*/
-		GPIOE->PCOR = (GPIOE->PSOR) | (1<<pin); // ON - GREEN pin26.
+		GPIOE->PCOR =  (1<<pin); // ON - GREEN pin26.
 	default:/*If doesn't exist the option*/
 
 		break;
